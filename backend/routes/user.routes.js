@@ -1,6 +1,7 @@
 import express from "express"
 import isAuth from "../middlewares/isAuth.js"
 import { getCurrentUser, updateAssistant} from "../controllers/user.controllers.js"
+import upload from "../middlewares/multer.js"
 
 
 const userRouter=express.Router()
