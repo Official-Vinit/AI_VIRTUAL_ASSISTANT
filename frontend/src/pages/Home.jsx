@@ -207,30 +207,34 @@ function Home() {
   }, [])
 
   return (
-    <div className='w-full h-[100vh] bg-gradient-to-t from-[black] to-[#02023d] flex justify-center items-center flex-col gap-[15px] overflow-hidden'>
-      <CgMenuRight className='lg:hidden text-white absolute top-[20px] right-[20px] w-[25px] h-[25px]' onClick={() => setHam(true)} />
-      <div className={`absolute lg:hidden top-0 w-full h-full bg-[#00000053] backdrop-blur-lg p-[20px] flex flex-col gap-[20px] items-start ${ham ? "translate-x-0" : "translate-x-full"} transition-transform`}>
-        <RxCross1 className=' text-white absolute top-[20px] right-[20px] w-[25px] h-[25px]' onClick={() => setHam(false)} />
-        <button className='min-w-[150px] h-[60px]  text-black font-semibold   bg-white rounded-full cursor-pointer text-[19px] ' onClick={handleLogOut}>Log Out</button>
-        <button className='min-w-[150px] h-[60px]  text-black font-semibold  bg-white  rounded-full cursor-pointer text-[19px] px-[20px] py-[10px] ' onClick={() => navigate("/customize")}>Customize your Assistant</button>
-        <div className='w-full h-[2px] bg-gray-400'></div>
-        <h1 className='text-white font-semibold text-[19px]'>History</h1>
-        <div className='w-full h-[400px] gap-[20px] overflow-y-auto flex flex-col truncate'>
+    <div className='w-full min-h-screen bg-gray-50 flex justify-center items-center flex-col gap-[15px] overflow-hidden text-gray-800'>
+      <CgMenuRight className='lg:hidden text-gray-800 absolute top-[20px] right-[20px] w-[25px] h-[25px] cursor-pointer' onClick={() => setHam(true)} />
+      <div className={`absolute lg:hidden top-0 w-full h-full bg-white border-l border-gray-200 p-[20px] flex flex-col gap-[20px] items-start ${ham ? "translate-x-0" : "translate-x-full"} transition-transform z-50`}>
+        <RxCross1 className=' text-gray-800 absolute top-[20px] right-[20px] w-[25px] h-[25px] cursor-pointer' onClick={() => setHam(false)} />
+        <button className='w-full min-w-[150px] h-[50px] text-gray-800 font-semibold bg-gray-200 hover:bg-gray-300 rounded cursor-pointer text-[16px] ' onClick={handleLogOut}>Log Out</button>
+        <button className='w-full min-w-[150px] h-[50px] text-white font-semibold bg-blue-600 hover:bg-blue-700 rounded cursor-pointer text-[16px] px-[20px] py-[10px] ' onClick={() => navigate("/customize")}>Customize your Assistant</button>
+        <div className='w-full h-[1px] bg-gray-300'></div>
+        <h1 className='text-gray-800 font-semibold text-[19px]'>History</h1>
+        <div className='w-full h-[400px] gap-[10px] overflow-y-auto flex flex-col truncate'>
           {userData.history?.map((his, index) => (
-            <div key={index} className='text-gray-200 text-[18px] w-full h-[30px]'>{his}</div>
+            <div key={index} className='text-gray-600 text-[16px] w-full border-b border-gray-100 py-1'>{his}</div>
           ))}
         </div>
       </div>
-      <button className='min-w-[150px] h-[60px] mt-[30px] text-black font-semibold absolute hidden lg:block top-[20px] right-[20px]  bg-white rounded-full cursor-pointer text-[19px] ' onClick={handleLogOut}>Log Out</button>
-      <button className='min-w-[150px] h-[60px] mt-[30px] text-black font-semibold  bg-white absolute top-[100px] right-[20px] rounded-full cursor-pointer text-[19px] px-[20px] py-[10px] hidden lg:block ' onClick={() => navigate("/customize")}>Customize your Assistant</button>
-      <div className='w-[300px] h-[400px] flex justify-center items-center overflow-hidden rounded-4xl shadow-lg'>
+      <button className='min-w-[120px] h-[40px] mt-[30px] text-gray-800 font-semibold absolute hidden lg:block top-[20px] right-[20px] bg-white border border-gray-300 hover:bg-gray-100 rounded shadow-sm cursor-pointer text-[15px] ' onClick={handleLogOut}>Log Out</button>
+      <button className='min-w-[150px] h-[40px] mt-[30px] text-white font-semibold bg-blue-600 hover:bg-blue-700 absolute top-[70px] right-[20px] rounded shadow-sm cursor-pointer text-[15px] px-[15px] hidden lg:block ' onClick={() => navigate("/customize")}>Customize Assistant</button>
+      <div className='w-[300px] h-[400px] flex justify-center items-center overflow-hidden rounded bg-gray-200 shadow-sm border border-gray-300'>
         <img src={userData?.assistantImage} alt="" className='h-full object-cover' />
       </div>
-      <h1 className='text-white text-[18px] font-semibold'>I'm {userData?.assistantName}</h1>
-      <p className='text-white text-[14px]'>{listening ? "Listening..." : statusText}</p>
-      {!aiText && <img src={userImg} alt="" className='w-[200px]' />}
-      {aiText && <img src={aiImg} alt="" className='w-[200px]' />}
-      <h1 className='text-white text-[18px] font-semibold text-wrap text-center px-[20px]'>{userText || aiText || null}</h1>
+      <h1 className='text-gray-800 text-[20px] font-bold'>I'm {userData?.assistantName}</h1>
+      <p className='text-gray-600 text-[14px]'>{listening ? "Listening..." : statusText}</p>
+      
+      <div className='h-[150px] flex items-center justify-center'>
+        {!aiText && <img src={userImg} alt="" className='w-[100px] opacity-80' />}
+        {aiText && <img src={aiImg} alt="" className='w-[100px] opacity-80' />}
+      </div>
+      
+      <h1 className='text-gray-800 text-[18px] font-semibold text-wrap text-center px-[20px] max-w-2xl min-h-[50px]'>{userText || aiText || null}</h1>
     </div>
   )
 }

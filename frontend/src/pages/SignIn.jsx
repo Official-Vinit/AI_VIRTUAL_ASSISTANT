@@ -32,23 +32,23 @@ try {
 }
     }
   return (
-    <div className='w-full h-[100vh] bg-cover flex justify-center items-center' style={{backgroundImage:`url(${bg})`}} >
- <form className='w-[90%] h-[600px] max-w-[500px] bg-[#00000062] backdrop-blur shadow-lg shadow-black flex flex-col items-center justify-center gap-[20px] px-[20px]' onSubmit={handleSignIn}>
-<h1 className='text-white text-[30px] font-semibold mb-[30px]'>Sign In to <span className='text-blue-400'>Virtual Assistant</span></h1>
+    <div className='w-full h-screen bg-gray-50 flex justify-center items-center'>
+      <form className='w-[90%] max-w-[400px] bg-white border border-gray-200 shadow-sm flex flex-col items-center justify-center gap-[20px] p-[30px] rounded' onSubmit={handleSignIn}>
+        <h1 className='text-gray-800 text-[24px] font-semibold mb-[10px]'>Sign In to <span className='text-blue-600'>Virtual Assistant</span></h1>
 
-<input type="email" placeholder='Email' className='w-full h-[60px] outline-none border-2 border-white bg-transparent  text-white placeholder-gray-300 px-[20px] py-[10px] rounded-full text-[18px]' required onChange={(e)=>setEmail(e.target.value)} value={email}/>
-<div className='w-full h-[60px] border-2 border-white bg-transparent  text-white rounded-full text-[18px] relative'>
-<input type={showPassword?"text":"password"} placeholder='password' className='w-full h-full rounded-full outline-none bg-transparent placeholder-gray-300 px-[20px] py-[10px]' required onChange={(e)=>setPassword(e.target.value)} value={password}/>
-{!showPassword && <IoEye className='absolute top-[18px] right-[20px] w-[25px] h-[25px] text-[white] cursor-pointer' onClick={()=>setShowPassword(true)}/>}
-  {showPassword && <IoEyeOff className='absolute top-[18px] right-[20px] w-[25px] h-[25px] text-[white] cursor-pointer' onClick={()=>setShowPassword(false)}/>}
-</div>
-{err.length>0 && <p className='text-red-500 text-[17px]'>
-  *{err}
-  </p>}
-<button className='min-w-[150px] h-[60px] mt-[30px] text-black font-semibold  bg-white rounded-full text-[19px] ' disabled={loading}>{loading?"Loading...":"Sign In"}</button>
+        <input type="email" placeholder='Email' className='w-full h-[50px] outline-none border border-gray-300 bg-white text-gray-800 placeholder-gray-400 px-[15px] rounded text-[16px]' required onChange={(e)=>setEmail(e.target.value)} value={email}/>
+        <div className='w-full h-[50px] border border-gray-300 bg-white text-gray-800 rounded text-[16px] relative'>
+          <input type={showPassword?"text":"password"} placeholder='password' className='w-full h-full rounded outline-none bg-transparent placeholder-gray-400 px-[15px]' required onChange={(e)=>setPassword(e.target.value)} value={password}/>
+          {!showPassword && <IoEye className='absolute top-[12px] right-[15px] w-[25px] h-[25px] text-gray-500 cursor-pointer' onClick={()=>setShowPassword(true)}/>}
+          {showPassword && <IoEyeOff className='absolute top-[12px] right-[15px] w-[25px] h-[25px] text-gray-500 cursor-pointer' onClick={()=>setShowPassword(false)}/>}
+        </div>
+        {err.length>0 && <p className='text-red-500 text-[14px] w-full text-left'>
+          *{err}
+        </p>}
+        <button className='w-full h-[50px] mt-[10px] text-white font-semibold bg-blue-600 hover:bg-blue-700 rounded text-[16px]' disabled={loading}>{loading?"Loading...":"Sign In"}</button>
 
-<p className='text-[white] text-[18px] cursor-pointer' onClick={()=>navigate("/signup")}>Want to create a new account ? <span className='text-blue-400'>Sign Up</span></p>
- </form>
+        <p className='text-gray-600 text-[14px] cursor-pointer mt-2' onClick={()=>navigate("/signup")}>Want to create a new account? <span className='text-blue-600'>Sign Up</span></p>
+      </form>
     </div>
   )
 }
