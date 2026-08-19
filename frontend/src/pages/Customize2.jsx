@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { userDataContext } from '../context/UserContext'
+import { useContext, useState } from 'react'
+import { userDataContext } from '../context/UserDataContext'
 import axios from 'axios'
 import { MdKeyboardBackspace } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,7 @@ function Customize2() {
     const handleUpdateAssistant=async ()=>{
         setLoading(true)
         try {
-            let formData=new FormData() 
+            let formData=new FormData()
             formData.append("assistantName",assistantName)
             if(backendImage){
                  formData.append("assistantImage",backendImage)
